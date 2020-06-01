@@ -1,79 +1,66 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { graphql } from 'gatsby'
-import { Layout, Listing, Wrapper, Title } from '../components'
-import website from '../../config/website'
+import React, { Component } from "react";
+import { graphql } from "gatsby";
+import styled from "@emotion/styled";
+// import website from "../../config/website";
+import Layout from "../components/Layout";
+// import Listing from "../components/Listing";
+import Wrapper from "../components/Wrapper";
+// import Title from "../components/Title";
+import Footer from "../components/Footer";
+import Story from "../components/Story";
 
 const Hero = styled.header`
-  background-color: ${(props) => props.theme.colors.greyLight};
-  display: flex;
-  align-items: center;
-`
+  width: 100%;
+  height: 900px;
+  position: relative;
+  padding: 1.75rem;
+  @media (max-width: ${(props) => props.theme.breakpoint.s}) {
+    height: 500px;
+  }
+`;
+const HeroLogo = styled.h2`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 1.75rem;
+  margin-top: 50px;
+`;
 
-const HeroInner = styled(Wrapper)`
-  padding-top: 13rem;
-  padding-bottom: 13rem;
+const HeroInner = styled.div`
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   h1 {
-    margin-bottom: 2rem;
+    letter-spacing: 0.2rem;
+    line-height: 4.5rem;
   }
-  @media (max-width: ${(props) => props.theme.breakpoints.l}) {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+  h3 {
+    font-family: ${(props) => props.theme.fontFamily.body};
+    margin-top: 2rem;
+    font-size: 1.85rem;
+    font-weight: 400;
   }
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-`
-
-const HeroText = styled.div`
-  font-size: 1.7rem;
-  line-height: 1.4;
-  margin-bottom: 2rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
-    font-size: 1.4rem;
-  }
-  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-    font-size: 1.25rem;
-  }
-`
-
-const Social = styled.ul`
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0;
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  li {
-    display: inline;
-    &:not([data-name='social-entry-0']) {
-      margin-left: 2.5rem;
-      @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-        margin-left: 1.75rem;
-      }
+  @media (max-width: ${(props) => props.theme.breakpoint.m}) {
+    h1 {
+      line-height: 3.5rem;
     }
-    a {
-      font-style: normal;
-      color: ${(props) => props.theme.colors.greyDark};
-      font-size: 1.333rem;
-      font-weight: 600;
-      &:hover,
-      &:focus {
-        color: ${(props) => props.theme.colors.primary};
-        text-decoration: none;
-      }
-      @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-        font-size: 1.2rem;
-      }
+    h3 {
+      font-size: 1.5rem;
     }
   }
-`
+  @media (max-width: ${(props) => props.theme.breakpoint.s}) {
+    h1 {
+      line-height: 2.5rem;
+    }
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+`;
 
 const ProjectListing = styled.ul`
   list-style-type: none;
@@ -81,137 +68,142 @@ const ProjectListing = styled.ul`
   margin-top: 4rem;
   li {
     margin-bottom: 1.45rem;
-    a {
-      font-size: 2.369rem;
-      font-style: normal;
-      color: ${(props) => props.theme.colors.black};
-      @media (max-width: ${(props) => props.theme.breakpoints.s}) {
-        font-size: 1.777rem;
-      }
+  }
+  a {
+    font-size: 2.369rem;
+    font-style: normal;
+    color: ${(props) => props.theme.colors.black};
+    @media (max-width: ${(props) => props.theme.breakpoint.s}) {
+      font-size: 1.777rem;
     }
   }
-`
+`;
+const Contact = styled.div`
+  margin: 0 auto;
+  h1,
+  h2,
+  h3 {
+    color: ${(props) => props.theme.colors.text};
+  }
+  h3 {
+    font-family: ${(props) => props.theme.fontFamily.body};
+    margin-top: 1rem;
+    font-size: 1.85rem;
+    font-weight: 400;
+  }
+  @media (max-width: ${(props) => props.theme.breakpoint.m}) {
+    font-size: 1.5rem;
+  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
-const IndexWrapper = Wrapper.withComponent('main')
+// const IndexWrapper = Wrapper.withComponent("main");
 
 class Index extends Component {
   render() {
-    const {
-      data: { homepage, social, posts, projects },
-    } = this.props
+    // const {
+    //   data: { homepage, social, posts, projects },
+    // } = this.props;
     return (
       <Layout>
         <Hero>
+          <HeroLogo>rwoj</HeroLogo>
           <HeroInner>
-            <h1>{homepage.data.title.text}</h1>
-            <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
-            <Social>
-              {social.nodes.map((s, index) => (
-                <li data-name={`social-entry-${index}`} key={s.primary.label.text}>
-                  <a href={s.primary.link.url}>{s.primary.label.text}</a>
-                </li>
-              ))}
-            </Social>
+            <h1>
+              This is the portfolio of my projects, business activities and
+              interests.
+            </h1>
+            <h3>Enjoy reviewing!</h3>
           </HeroInner>
         </Hero>
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-          <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
+        {/* <IndexWrapper
+          id={website.skipNavId}
+          style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
+        >
+          <Title style={{ marginTop: "4rem" }}>Recent posts</Title>
           <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
+          <Title style={{ marginTop: "8rem" }}>Recent projects</Title>
           <ProjectListing>
             {projects.nodes.map((project) => (
               <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>{project.primary.label.text}</a>
+                <a href={project.primary.link.url}>
+                  {project.primary.label.text}
+                </a>
               </li>
             ))}
           </ProjectListing>
-        </IndexWrapper>
+        </IndexWrapper> */}
+        <Story />
+        <Contact>
+          <h1>Say hi!</h1>
+          <h3>rwoj@poczta.onet.pl</h3>
+        </Contact>
+        <Footer />
       </Layout>
-    )
+    );
   }
 }
 
-export default Index
+export default Index;
 
-Index.propTypes = {
-  data: PropTypes.shape({
-    homepage: PropTypes.shape({
-      data: PropTypes.shape({
-        title: PropTypes.shape({
-          text: PropTypes.string.isRequired,
-        }),
-        content: PropTypes.shape({
-          html: PropTypes.string.isRequired,
-        }),
-      }),
-    }),
-    social: PropTypes.shape({
-      nodes: PropTypes.array.isRequired,
-    }),
-    posts: PropTypes.shape({
-      nodes: PropTypes.array.isRequired,
-    }),
-    projects: PropTypes.shape({
-      nodes: PropTypes.array.isRequired,
-    }),
-  }).isRequired,
-}
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    homepage: prismicHomepage {
-      data {
-        title {
-          text
-        }
-        content {
-          html
-        }
-      }
-    }
-    social: allPrismicHeroLinksBodyLinkItem {
-      nodes {
-        primary {
-          label {
-            text
-          }
-          link {
-            url
-          }
-        }
-      }
-    }
-    posts: allPrismicPost(sort: { fields: [data___date], order: DESC }) {
-      nodes {
-        uid
-        data {
-          title {
-            text
-          }
-          date(formatString: "DD.MM.YYYY")
-          categories {
-            category {
-              document {
-                data {
-                  name
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    projects: allPrismicProjectsBodyLinkItem {
-      nodes {
-        primary {
-          label {
-            text
-          }
-          link {
-            url
-          }
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query IndexQuery {
+//     homepage: prismicHomepage {
+//       data {
+//         title {
+//           text
+//         }
+//         content {
+//           html
+//         }
+//       }
+//     }
+//     social: allPrismicHeroLinksBodyLinkItem {
+//       nodes {
+//         primary {
+//           label {
+//             text
+//           }
+//           link {
+//             url
+//           }
+//         }
+//       }
+//     }
+//     posts: allPrismicPost(sort: { fields: [data___date], order: DESC }) {
+//       nodes {
+//         uid
+//         data {
+//           title {
+//             text
+//           }
+//           date(formatString: "DD.MM.YYYY")
+//           categories {
+//             category {
+//               document {
+//                 data {
+//                   name
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//     projects: allPrismicProjectsBodyLinkItem {
+//       nodes {
+//         primary {
+//           label {
+//             text
+//           }
+//           link {
+//             url
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;

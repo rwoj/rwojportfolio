@@ -1,22 +1,27 @@
 const theme = {
   colors: {
-    primary: '#3D63AE',
-    bg: '#fff',
-    black: '#000',
-    greyLight: '#EBEDF2',
-    greyBlue: '#a2bce2',
-    grey: '#595C62',
-    greyDark: '#303643',
-    greyDarker: '#1c252b',
+    primary: "#b710a1",
+    primaryLight: "#e456e9",
+    primaryDark: "#3d0435",
+    bg: "#fff",
+    text: "#021212",
+    textInvert: "#fff",
+    greyLight: "#B4B9C1",
+    greyMedium: "#414141",
+    greyDark: "#2F2F2F",
   },
-  maxWidth: '1000px',
-  maxWidthText: '720px',
-  breakpoints: {
-    xs: '400px',
-    s: '600px',
-    m: '900px',
-    l: '1200px',
+  fontFamily: {
+    body: `'Open Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
+    heading: `'Bree Serif', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'`,
   },
-}
+  maxWidth: "1800px",
+  maxWidthText: "1000px",
+  breakpoint: {
+    xs: "400px",
+    s: "600px",
+    m: "900px",
+    l: "1200px",
+  },
+};
 
-export default theme
+export default theme;
