@@ -1,11 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import styled from "@emotion/styled";
-// import website from "../../config/website";
 import Layout from "../components/Layout";
-// import Listing from "../components/Listing";
-import Wrapper from "../components/Wrapper";
-// import Title from "../components/Title";
+import GridItem from "../components/GridItem";
 import Footer from "../components/Footer";
 import Story from "../components/Story";
 
@@ -100,110 +97,88 @@ const Contact = styled.div`
   flex-direction: column;
 `;
 
-// const IndexWrapper = Wrapper.withComponent("main");
+const Wrapper = styled.div`
+  display: flex;
+  max-width: ${(props) => props.theme.maxWidth};
+  p: 4;
+  mb: [4, 4, 7];
+  mx: auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+`;
 
-class Index extends Component {
-  render() {
-    // const {
-    //   data: { homepage, social, posts, projects },
-    // } = this.props;
-    return (
-      <Layout>
-        <Hero>
-          <HeroLogo>rwoj</HeroLogo>
-          <HeroInner>
-            <h1>
-              This is the portfolio of my projects, business activities and
-              interests.
-            </h1>
-            <h3>Enjoy reviewing!</h3>
-          </HeroInner>
-        </Hero>
-        {/* <IndexWrapper
-          id={website.skipNavId}
-          style={{ paddingTop: "2rem", paddingBottom: "2rem" }}
-        >
-          <Title style={{ marginTop: "4rem" }}>Recent posts</Title>
-          <Listing posts={posts.nodes} />
-          <Title style={{ marginTop: "8rem" }}>Recent projects</Title>
-          <ProjectListing>
-            {projects.nodes.map((project) => (
-              <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>
-                  {project.primary.label.text}
-                </a>
-              </li>
-            ))}
-          </ProjectListing>
-        </IndexWrapper> */}
-        <Story />
-        <Contact>
-          <h1>Say hi!</h1>
-          <h3>rwoj@poczta.onet.pl</h3>
-        </Contact>
-        <Footer />
-      </Layout>
-    );
-  }
-}
+const Index = ({
+  data: {
+    caseStudies: { edges },
+  },
+}) => (
+  <Layout>
+    <Hero>
+      <HeroLogo>rwoj</HeroLogo>
+      <HeroInner>
+        <h1>
+          This is the portfolio of my projects, business activities and
+          interests.
+        </h1>
+        <h3>Enjoy reviewing! </h3>
+      </HeroInner>
+    </Hero>
+    <Wrapper>
+      {edges.map((c) => (
+        <GridItem
+          uid={c.node.uid}
+          key={c.node.uid}
+          image={c.node.data.image.localFile.childImageSharp.fluid}
+          alt={c.node.data.title.text}
+          title={c.node.data.title.text}
+          subtitle={c.node.data.subtitle.text}
+        />
+      ))}
+    </Wrapper>
+    <Story />
+    <Contact>
+      <h1>Say hi!</h1>
+      <h3>rwoj@poczta.onet.pl</h3>
+    </Contact>
+    <Footer />
+  </Layout>
+);
 
 export default Index;
 
-// export const pageQuery = graphql`
-//   query IndexQuery {
-//     homepage: prismicHomepage {
-//       data {
-//         title {
-//           text
-//         }
-//         content {
-//           html
-//         }
-//       }
-//     }
-//     social: allPrismicHeroLinksBodyLinkItem {
-//       nodes {
-//         primary {
-//           label {
-//             text
-//           }
-//           link {
-//             url
-//           }
-//         }
-//       }
-//     }
-//     posts: allPrismicPost(sort: { fields: [data___date], order: DESC }) {
-//       nodes {
-//         uid
-//         data {
-//           title {
-//             text
-//           }
-//           date(formatString: "DD.MM.YYYY")
-//           categories {
-//             category {
-//               document {
-//                 data {
-//                   name
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//     projects: allPrismicProjectsBodyLinkItem {
-//       nodes {
-//         primary {
-//           label {
-//             text
-//           }
-//           link {
-//             url
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+export const indexQuery = graphql`
+  query IndexQuery {
+    caseStudies: allPrismicCasestudy(
+      sort: { fields: [last_publication_date], order: DESC }
+    ) {
+      edges {
+        node {
+          uid
+          data {
+            image {
+              localFile {
+                childImageSharp {
+                  fluid(
+                    maxWidth: 900
+                    maxHeight: 900
+                    quality: 90
+                    traceSVG: { color: "#021212" }
+                    cropFocus: ENTROPY
+                  ) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
+            title {
+              text
+            }
+            subtitle {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+`;

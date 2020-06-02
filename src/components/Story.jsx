@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import BeTheHero from "../images/be_the_hero.svg";
 import DataReport from "../images/data_report.svg";
-import MayTheForce from "../images/may_the_force.svg";
 import LaunchDay from "../images/undraw_launch_day_4e04.svg";
 
 const PrimaryBG = styled.section`
@@ -79,7 +77,7 @@ const Story = () => (
   <PrimaryBG>
     <StoryItem>
       <ServiceImage>
-        <img src={LaunchDay} alt="Be The Hero" />
+        <img src={LaunchDay} alt="Launch to Space" />
       </ServiceImage>
       <ServiceText>
         <h2>Looking towards future</h2>
@@ -115,24 +113,6 @@ const Story = () => (
         </ul>
       </ServiceText>
     </StoryItem>
-    {/* <StoryItem>
-      <ServiceImage>
-        <img src={MayTheForce} alt="May the Force" />
-      </ServiceImage>
-      <ServiceText>
-        <h2>May the force be with you</h2>
-        <p>
-          Far far away, behind the word mountains, far from the countries
-          Vokalia and Consonantia, there live the blind texts. Separated they
-          live in Bookmarksgrove right at the coast of the Semantics, a large
-          language ocean.
-        </p>
-        <ul>
-          <li>Service Super</li>
-          <li>Great Offer</li>
-        </ul>
-      </ServiceText>
-    </StoryItem> */}
   </PrimaryBG>
 );
 

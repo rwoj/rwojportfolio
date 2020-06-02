@@ -5,12 +5,8 @@ import React from "react";
 import { Global, css } from "@emotion/core";
 import { ThemeProvider } from "emotion-theming";
 
-// import Footer from "./Footer";
-// import SEO from "./SEO";
+import SEO from "./SEO";
 import theme from "../styles/theme.js";
-
-// import "typeface-lora";
-// import "typeface-source-sans-pro";
 
 const globalStyle = css`
   *,
@@ -109,7 +105,7 @@ const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <Global styles={globalStyle} />
-      {/* <SEO /> */}
+      <SEO />
       {children}
     </>
   </ThemeProvider>
