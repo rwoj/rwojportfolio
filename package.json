@@ -3,7 +3,10 @@
   "description": "my portfolio page",
   "private": true,
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "engines": {
+    "node": "12.16.3"
+  },
   "author": "rwoj <rwoj@poczta.onet.pl>",
   "scripts": {
     "build": "gatsby build",
