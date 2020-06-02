@@ -2,10 +2,7 @@ require("dotenv").config({
   path: `.env`,
 });
 
-// const prismicHtmlSerializer = require("./src/gatsby/htmlSerializer");
-
 const website = require("./config/website");
-
 const pathPrefix = website.pathPrefix === "/" ? "" : website.pathPrefix;
 
 module.exports = {
@@ -13,17 +10,13 @@ module.exports = {
   pathPrefix: website.pathPrefix,
   siteMetadata: {
     siteUrl: website.url + pathPrefix, // For gatsby-plugin-sitemap
-    // pathPrefix,
     title: website.title,
     titleAlt: website.titleAlt,
     description: website.description,
     banner: website.logo,
     headline: website.headline,
     siteLanguage: website.siteLanguage,
-    ogLanguage: website.ogLanguage,
     author: website.author,
-    twitter: website.twitter,
-    facebook: website.facebook,
   },
   /* Plugins */
   plugins: [
@@ -34,7 +27,6 @@ module.exports = {
       options: {
         repositoryName: "rwojportfolio",
         accessToken: `${process.env.API_KEY}`,
-        // Get the correct URLs in blog posts
         linkResolver: () => (usecase) => `/${usecase.uid}`,
         // PrismJS highlighting for labels and slices
         htmlSerializer: ({ node, key, value }) => (
@@ -45,8 +37,6 @@ module.exports = {
         ) => {
           // Your HTML serializer
         },
-        // htmlSerializer: () => prismicHtmlSerializer,
-        // Remove this config option if you only have one language in your Prismic repository
         // lang: "en-gb",
       },
     },
@@ -59,12 +49,12 @@ module.exports = {
         pathToConfigModule: "src/styles/typography.js",
       },
     },
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: website.googleAnalyticsID,
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-analytics",
+    //   options: {
+    //     trackingId: website.googleAnalyticsID,
+    //   },
+    // },
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",

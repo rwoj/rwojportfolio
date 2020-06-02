@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import Img from "gatsby-image";
 import Layout from "../components/Layout";
 import Footer from "../components/Footer";
-import SEO from "../components/SEO";
+// import SEO from "../components/SEO";
 import config from "../../config/website";
 
 const Hero = styled.section`
@@ -101,7 +101,7 @@ const CaseTemplate = ({ data: { prismicCasestudy: caseNode } }) => {
       <Helmet>
         <title>{`${data.title.text} | ${config.siteTitle}`}</title>
       </Helmet>
-      <SEO caseNode={caseNode} casePath={caseNode.uid} caseSEO />
+      {/* <SEO caseNode={caseNode} casePath={caseNode.uid} caseSEO /> */}
       <Hero>
         <Img fluid={data.image.localFile.childImageSharp.fluid} />
         <TitleWrapper py={4}>
