@@ -36,7 +36,7 @@ const StyledLink = styled(Link)`
     transform: translateX(-6px);
   }
 `;
-const Contact = styled.div`
+const Contact = styled(Link)`
   transform: translateX(0);
   transition: all 200ms ease-out;
   &:before {
@@ -65,7 +65,7 @@ const Footer = ({ isCase }) => {
             }}
           >
             <StyledLink to="/">Return to home</StyledLink>
-            <Contact>Contact Me</Contact>
+            <Contact to="/#contact">Contact Me</Contact>
           </div>
         ) : (
           <div
@@ -75,10 +75,13 @@ const Footer = ({ isCase }) => {
             }}
           >
             Copyright &copy; {year} by
-            <a href="https://github.com/rwoj">&nbsp;rwoj</a>. Pictures by&nbsp;
-            <a href="https://unsplash.com/"> Unsplash</a>. Illustrations
-            by&nbsp;
-            <a href="https://undraw.co/illustrations">Undraw</a>.
+            <a href="https://github.com/rwoj">&nbsp;rwoj</a>. My profile on
+            &nbsp;
+            <a href="https://www.linkedin.com/in/radek-wojdowski-824699/">
+              {" "}
+              LinkedIn
+            </a>
+            .
           </div>
         )}
       </Inner>

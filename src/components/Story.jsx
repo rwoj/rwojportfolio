@@ -80,7 +80,7 @@ const Story = () => (
         <img src={LaunchDay} alt="Launch to Space" />
       </ServiceImage>
       <ServiceText>
-        <h2>Looking towards future</h2>
+        <h2>Looking towards the future</h2>
         <p>
           I think technology enables great things. In particular I belive in:
         </p>
@@ -99,7 +99,7 @@ const Story = () => (
         <img src={DataReport} alt="Data Report" />
       </ServiceImage>
       <ServiceText>
-        <h2>For a time being</h2>
+        <h2>And now</h2>
         <p>
           Well, let's focus on what business needs. To grow the business you
           need more then technology. So, my focus is:

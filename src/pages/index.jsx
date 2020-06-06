@@ -136,7 +136,7 @@ const Index = ({
       ))}
     </Wrapper>
     <Story />
-    <Contact>
+    <Contact id="contact">
       <h1>Say hi!</h1>
       <h3>rwoj@poczta.onet.pl</h3>
     </Contact>

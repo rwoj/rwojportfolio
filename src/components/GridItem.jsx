@@ -99,7 +99,8 @@ const StyledLink = styled(Link)`
 `;
 
 const GridItem = ({ uid, image, alt, title, subtitle }) => (
-  <Item key={uid} style={{ marginTop: `${randomNumber(4, 8) * 2}rem` }}>
+  // <Item key={uid} style={{ marginTop: `${randomNumber(4, 8) * 2}rem` }}>
+  <Item key={uid} style={{ marginTop: `5rem` }}>
     <StyledLink to={uid}>
       <Overlay>
         <span>view</span>
