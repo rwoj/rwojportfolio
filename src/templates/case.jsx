@@ -10,7 +10,7 @@ import config from "../../config/website";
 
 const Hero = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   position: relative;
   overflow: hidden;
   .gatsby-image-outer-wrapper {
@@ -103,11 +103,11 @@ const CaseTemplate = ({ data: { prismicCasestudy: caseNode } }) => {
       <SEO caseNode={caseNode} casePath={caseNode.uid} caseSEO />
       <Hero>
         <Img fluid={data.image.localFile.childImageSharp.fluid} />
-        <TitleWrapper py={4}>
+        <TitleWrapper>
           <Title>{data.title.text}</Title>
         </TitleWrapper>
       </Hero>
-      <Wrapper py={4} px={4} mx="auto">
+      <Wrapper>
         <SubTitle>{data.subtitle.text}</SubTitle>
         <Content dangerouslySetInnerHTML={{ __html: data.content.html }} />
       </Wrapper>
