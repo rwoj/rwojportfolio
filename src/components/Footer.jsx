@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "gatsby";
 import styled from "@emotion/styled";
 
@@ -14,12 +14,13 @@ const StyledFooter = styled.footer`
 `;
 
 const Inner = styled.div`
+  padding: 0.5rem;
   @media (max-width: ${(props) => props.theme.breakpoint.l}) {
     justify-content: center;
     flex-direction: column;
     text-align: center;
     div:last-child {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
   }
 `;
@@ -59,9 +60,10 @@ const Footer = ({ isCase }) => {
         {isCase ? (
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              padding: '1rem',
             }}
           >
             <StyledLink to="/">Return to home</StyledLink>
@@ -70,18 +72,13 @@ const Footer = ({ isCase }) => {
         ) : (
           <div
             style={{
-              display: "flex",
-              justifyContent: "center",
+              display: 'flex',
+              justifyContent: 'center',
             }}
           >
             Copyright &copy; {year} by
-            <a href="https://github.com/rwoj">&nbsp;rwoj</a>. My profile on
-            &nbsp;
-            <a href="https://www.linkedin.com/in/radek-wojdowski-824699/">
-              {" "}
-              LinkedIn
-            </a>
-            .
+            <a href="https://github.com/rwoj">&nbsp;rwoj</a>. My profile on &nbsp;
+            <a href="https://www.linkedin.com/in/radek-wojdowski-824699/"> LinkedIn</a>.
           </div>
         )}
       </Inner>

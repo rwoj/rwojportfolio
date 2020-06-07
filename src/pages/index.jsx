@@ -59,22 +59,22 @@ const HeroInner = styled.div`
   }
 `;
 
-const ProjectListing = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  margin-top: 4rem;
-  li {
-    margin-bottom: 1.45rem;
-  }
-  a {
-    font-size: 2.369rem;
-    font-style: normal;
-    color: ${(props) => props.theme.colors.black};
-    @media (max-width: ${(props) => props.theme.breakpoint.s}) {
-      font-size: 1.777rem;
-    }
-  }
-`;
+// const ProjectListing = styled.ul`
+//   list-style-type: none;
+//   margin-left: 0;
+//   margin-top: 4rem;
+//   li {
+//     margin-bottom: 1.45rem;
+//   }
+//   a {
+//     font-size: 2.369rem;
+//     font-style: normal;
+//     color: ${(props) => props.theme.colors.black};
+//     @media (max-width: ${(props) => props.theme.breakpoint.s}) {
+//       font-size: 1.777rem;
+//     }
+//   }
+// `;
 const Contact = styled.div`
   margin: 0 auto;
   h1,
@@ -117,8 +117,7 @@ const Index = ({
       <HeroLogo>rwoj</HeroLogo>
       <HeroInner>
         <h1>
-          This is the portfolio of my projects, business activities and
-          interests.
+          The portfolio of my projects, business activities and interests.
         </h1>
         <h3>Enjoy reviewing! </h3>
       </HeroInner>
